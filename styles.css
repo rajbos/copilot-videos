@@ -1,0 +1,37 @@
+/* Main container styling */
+#main-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+/* Grid styling for both feature sections */
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+/* Individual box styling */
+.feature-grid div {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.feature-grid div:hover {
+    transform: scale(1.05);
+}
+
+/* Responsive design adjustments */
+@media (max-width: 768px) {
+    #main-container {
+        flex-direction: column;
+    }
+
+    .feature-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
