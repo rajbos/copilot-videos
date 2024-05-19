@@ -7,6 +7,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
             data.features.forEach(feature => {
                 const featureGrid = document.createElement('div');
+                
+                // Create a new element for the SKU name
+                const skuName = document.createElement('h2');
+                skuName.textContent = feature.sku;
+                featureGrid.appendChild(skuName);
+
                 feature.items.forEach(item => {
                     const featureBox = document.createElement('div');
                     featureBox.innerHTML = `<h3>${item.title}</h3>`;
