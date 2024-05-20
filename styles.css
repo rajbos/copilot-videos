@@ -21,15 +21,15 @@
     justify-content: center; /* Center content horizontally */
     align-items: center; /* Center content vertically */
     gap: 20px;
-    border: 1px solid #ccc; /* Add the border to the divs in the feature grid */
     padding: 10px;
     cursor: pointer;
     transition: transform 0.2s;
 }
 .video-box {
     min-width: 120px; 
-    min-height: 80px; 
+    min-height: 100px; 
     text-align: center;
+    border: 1px solid #ccc; 
 }
 .feature-grid div:hover {
     transform: scale(1.05);
@@ -44,6 +44,7 @@
 body {
     background: radial-gradient(circle, rgba(34,34,59,1) 0%, rgba(14,14,44,1) 35%, black 100%);
     color: white;
+    max-width: 1200px;
 }
 
 a {
