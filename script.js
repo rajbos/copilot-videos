@@ -7,7 +7,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
             data.features.forEach(feature => {
                 const featureGrid = document.createElement('div');
-                
+                featureGrid.className = 'feature-grid'; 
+
                 // Create a new element for the SKU name
                 const skuName = document.createElement('h2');
                 skuName.textContent = feature.sku;
@@ -15,6 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 feature.items.forEach(item => {
                     const featureBox = document.createElement('div');
+                    featureBox.className = 'video-box';
                     featureBox.innerHTML = `<h3>${item.title}</h3>`;
                     featureBox.addEventListener('click', () => {
                         window.location.href = `detail.html?title=${encodeURIComponent(item.title)}&videoUrl=${encodeURIComponent(item.videoUrl)}&description=${encodeURIComponent(item.description)}`;
