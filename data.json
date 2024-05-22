@@ -114,5 +114,10 @@
         "url": "https://github.blog/changelog/label/copilot/feed/"
       }
     ]
+  },
+  "blogFeeds": {
+    "urls": [
+      "https://github.blog/?s=Copilot"
+    ]
   }
 }

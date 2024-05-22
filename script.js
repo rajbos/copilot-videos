@@ -130,6 +130,33 @@ document.addEventListener('DOMContentLoaded', function() {
                         allButton.textContent = `All (${totalItemCount})`;
                     });
             });
+
+            // Function to crawl and display blog posts
+            function crawlAndDisplayBlogPosts() {
+                const blogFeeds = data.blogFeeds.urls;
+                blogFeeds.forEach(url => {
+                    fetch(url)
+                        .then(response => response.text())
+                        .then(html => {
+                            const parser = new DOMParser();
+                            const doc = parser.parseFromString(html, 'text/html');
+                            const posts = doc.querySelectorAll('.post-item');
+                            posts.forEach(post => {
+                                const title = post.querySelector('.post-title').textContent;
+                                const description = post.querySelector('.post-excerpt').textContent;
+                                const date = post.querySelector('.post-date').textContent;
+                                const blogItem = document.createElement('div');
+                                blogItem.className = 'news-item blog-post';
+                                blogItem.innerHTML = `<h4>${title}</h4><p>${description}</p><span class="date">Published: ${date}</span>`;
+                                newsContainer.appendChild(blogItem);
+                            });
+                        })
+                        .catch(error => console.error('Error loading blog posts:', error));
+                });
+            }
+
+            // Call the function to crawl and display blog posts
+            crawlAndDisplayBlogPosts();
         })
         .catch(error => console.error('Error loading the data:', error));
 });
