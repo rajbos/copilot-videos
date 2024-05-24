@@ -1,3 +1,4 @@
+name: Generate overview RSS feed file
 on:
   workflow_dispatch:
 
