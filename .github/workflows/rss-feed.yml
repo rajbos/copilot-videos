@@ -6,7 +6,7 @@ on:
       - .github/workflows/rss-feed.yml
   
   schedule:
-    - cron: '/4 0 * * *'
+    - cron: '0 */4 * * *'
 
 jobs:
   update-rss-file:
