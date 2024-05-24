@@ -1,5 +1,9 @@
 on:
   workflow_dispatch:
+
+  push:
+    paths:
+      - .github/workflows/rss-feed.yml
   
   schedule:
     - cron: '/4 0 * * *'
@@ -50,7 +54,7 @@ jobs:
           else
             git checkout data
           fi
-          
+
           git add rss-feed.xml
           git commit -m "Update RSS feed"
           git push
