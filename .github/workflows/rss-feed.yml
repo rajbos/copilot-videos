@@ -1,0 +1,56 @@
+on:
+  workflow_dispatch:
+  
+  schedule:
+    - cron: '/4 0 * * *'
+
+jobs:
+  update-rss-file:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Update RSS feed
+        run: |
+          echo "Loading RSS feeds to aggregate..."
+          # load the data.json file
+          data=$(cat data.json)
+          # get the RSS feed URLs
+          urls=$(echo $data | jq -r '.feeds[]')
+          # create an empty list to store the aggregated feeds
+          overview="[]"
+          # load each feed and append it to the overview list
+          for url in $urls; do
+            echo "Loading $url..."
+            feed=$(curl -s $url | rss-to-json | jq '.items')
+            overview=$(echo $overview | jq ". += $feed")
+          done
+          # save the aggregated feeds to the file as an RSS feed
+          echo $overview | jq -r 'sort_by(.pubDate) | reverse | {items: .}' > rss-feed.xml
+          echo "RSS feed file updated!"
+      
+      - name: Set Git user globally to github-actions
+        uses: gotmax23/set-bot-git-user-action@v1.2.0
+        with:
+          bot: github-actions
+          name: "GitHub Actions"
+
+      - name: Check if there are changes
+        id: changes
+        uses: UnicornGlobal/has-changes-action@v1.0.11
+
+      - name: Commit changes
+        if: steps.changes.outputs.changed == 1
+        run: |
+          # check if the data branch already exists
+          git branch -a | grep data
+          if [ $? -ne 0 ]; then
+            git checkout -b data
+          else
+            git checkout data
+          fi
+          
+          git add rss-feed.xml
+          git commit -m "Update RSS feed"
+          git push
