@@ -150,5 +150,24 @@
       "description": "Learn in an example how much more you can get out of GitHub Copilot Chat from this video from Rob Bos",
       "url": "https://devopsjournal.io/blog/2024/06/19/GitHub-Copilot-Chat-Power-User"
     }
-  ]
+  ],
+  "adventure": {
+    "levels": [
+      {
+        "title": "Introduction to GitHub Copilot",
+        "description": "Discover the basics of GitHub Copilot and how it can assist you in your coding journey.",
+        "videoUrl": "https://youtube.com/intro"
+      },
+      {
+        "title": "Advanced Features of GitHub Copilot",
+        "description": "Dive deeper into the advanced features of GitHub Copilot and learn how to maximize its capabilities.",
+        "videoUrl": "https://youtube.com/advanced"
+      },
+      {
+        "title": "GitHub Copilot in Professional Development",
+        "description": "Explore how GitHub Copilot can be integrated into professional development workflows for increased efficiency.",
+        "videoUrl": "https://youtube.com/professional"
+      }
+    ]
+  }
 }
