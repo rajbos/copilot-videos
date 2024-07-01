@@ -367,6 +367,19 @@ h1 {
     background-color: #bd93f9;
 }
 
+#title-frame {
+    position: absolute;
+    top: 113px;
+    left: 0;
+    width: 100%;
+    font-weight: 700;
+    font-size: xxx-large;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    z-index: 10; /* Ensure it's above the canvas */
+}
+
 /* Styles specific to the game landscape interface */
 #game-container {
     display: flex;
@@ -375,7 +388,7 @@ h1 {
     margin: auto;
     width: 100%;
     height: 100vh;
-    background-color: #3a3a3a; /* Dark background for the game area */
+    position: relative;
 }
 
 #game-canvas {
@@ -392,4 +405,15 @@ h1 {
     border: 3px solid #8B4513; /* Leathery brown border for the video player */
     border-radius: 10px; /* Rounded corners for the video player */
     margin-top: 20px; /* Space above the video player */
+}
+
+#tooltip {
+    position: absolute;
+    display: none; /* Start hidden */
+    background-color: white;
+    border: 1px solid black;
+    color: black;
+    padding: 5px;
+    z-index: 100; /* Ensure it's above the canvas */
+    pointer-events: none; /* Allows mouse events to pass through to the canvas */
 }
