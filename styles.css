@@ -173,6 +173,10 @@ a {
     .feature-grid {
         grid-template-columns: repeat(2, 1fr);
     }
+    #business-features {
+        border-right: none; /* Hide the vertical line */
+        border-bottom: 2px solid #ccc; /* Add a horizontal line */
+    }
 }
 
 /* Styling for "Copilot News" section */
